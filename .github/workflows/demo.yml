@@ -7,8 +7,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run script file
       run: |
-         chmod +x ./public/scripts/test.py
-         python ./public/scripts/test.py
+         output=`git log --format=format:%H,%s`
+         output=`ls`
+         python ./public/scripts/test.py "$output"
       shell: bash
       env: 
         before: ${{github.event.before}}
